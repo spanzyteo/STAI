@@ -79,8 +79,8 @@ const TaskSection = () => {
             >
               <img src={item.icon} alt="" />
               <p
-                className="dm-sans font-normal leading-[1.5rem] text-[1rem] lg:text-[1.25rem]"
-                style={{ color: item.textColor }}
+                className={`dm-sans font-normal leading-[1.5rem] text-[1rem] lg:text-[1.25rem] text-[${item.textColor}]`}
+                // style={{ color: item.textColor }}
               >
                 {item.text}
               </p>
