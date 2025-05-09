@@ -1,34 +1,55 @@
-import { motion, useInView, useAnimation } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const Banner = () => {
   return (
-    <section className="relative text-center px-[1.5rem] md:px-[6.5rem]">
+    <section className="relative text-center px-[1.5rem] md:px-[6.5rem] overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="w-full h-full bg-white relative">
           <div className="absolute left-0 bottom-[-30%] w-[60%] h-[60%] bg-cyan-200 opacity-30 rounded-full blur-[120px]"></div>
           <div className="absolute right-0 bottom-[-30%] w-[60%] h-[60%] bg-orange-200 opacity-50 rounded-full blur-[120px]"></div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        <h1 className="playfair font-bold">
-          <span className="bg-gradient-to-r from-blue-500 via-pink-500 to-orange-400 bg-clip-text text-transparent text-[2.375rem] md:text-[3.75rem] ">
+      {/* Animated Content */}
+      <motion.div
+        className="relative z-10"
+        initial={{ opacity: 0, y: 200 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+      >
+        <motion.h1
+          className="playfair font-bold"
+          initial={{ opacity: 0, y: 20, scale: 0.2 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.1, duration: 2 }}
+        >
+          <span className="bg-gradient-to-r from-blue-500 via-pink-500 to-orange-400 bg-clip-text text-transparent text-[2.375rem] md:text-[3.75rem]">
             Your #1 AI Voice First
           </span>
           <br />
           <span className="text-gray-700 text-[2.375rem] md:text-[3.75rem]">
             Control App for Productivity
           </span>
-        </h1>
-        <p className="mt-4 text-gray-700 text-[1rem] md:text-[1.25rem] font-normal dm-sans md:w-[38.4375rem] text-center mx-auto self-stretch">
-          Stop typing tasks-just say it and STAI will organize it. Beat
-          procrastination with smart voice commands
-        </p>
+        </motion.h1>
+
+        <motion.p
+          className="mt-4 text-gray-700 text-[1rem] md:text-[1.25rem] font-normal dm-sans md:w-[38.4375rem] text-center mx-auto self-stretch"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+        >
+          Stop typing tasks — just say it and STAI will organize it. Beat
+          procrastination with smart voice commands.
+        </motion.p>
 
         {/* Input Box */}
-        <div className="mt-[1.25rem] md:mt-[4.1rem] flex w-full md:w-[31.7rem] md:h-[4.5rem] mx-auto p-1 bg-gradient-to-r from-[#8E77FF] via-[#F0DBE6] via-[#FFDEB4] via-[#B1E575] via-[#BEF4CF] to-[#89B9F7] rounded-[0.31rem] md:rounded-[1rem]">
+        <motion.div
+          className="mt-[1.25rem] md:mt-[4.1rem] flex w-full md:w-[31.7rem] md:h-[4.5rem] mx-auto p-1 bg-gradient-to-r from-[#8E77FF] via-[#F0DBE6] via-[#FFDEB4] via-[#B1E575] via-[#BEF4CF] to-[#89B9F7] rounded-[0.31rem] md:rounded-[1rem]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
           <div className="flex w-full bg-white rounded-[0.31rem] md:rounded-[1rem] p-1">
             <input
               type="email"
@@ -39,13 +60,12 @@ const Banner = () => {
               Join Waitlist
             </button>
           </div>
-        </div>
+        </motion.div>
+      </motion.div>
 
-        <img
-          src="/mockups.png"
-          alt="mockup"
-          className="mt-[1.5rem] md:mt-[3.69rem] mx-auto"
-        />
+      {/* Scroll Animated Image */}
+      <div className="relative z-10 w-[17rem] md:w-[38rem] mt-[1.5rem] md:mt-[3.69rem] mx-auto">
+        <img src="/phones.svg" alt="mockup" className="mx-auto w-full" />
       </div>
     </section>
   )
