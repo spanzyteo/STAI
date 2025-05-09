@@ -1,5 +1,5 @@
 import Banner from "./Components/Home/Banner"
-import ProductivitySection from "./Components/Home/ProductivitySection"
+import ProductivitySection from "./Components/Home/productivity/ProductivitySection"
 import TaskSection from "./Components/Home/TaskSection"
 
 const Home = () => {
