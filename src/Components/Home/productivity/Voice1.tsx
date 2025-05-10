@@ -22,9 +22,9 @@ const Voice1 = () => {
   return (
     <motion.div
       variants={fadeUp}
-      initial={isSmallScreen ? 'hidden' : undefined}
-      whileInView={isSmallScreen ? 'show' : undefined}
-      viewport={isSmallScreen ? { once: true, amount: 0.2 } : undefined}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
       className="bg-[#FFF] flex flex-col lg:p-[1.5rem] p-[1.146rem] gap-[1.3rem] lg:gap-[1.75rem] items-start rounded-[1.46rem] w-full border border-[#EEE8E0]"
     >
       <div className="flex items-center justify-between self-stretch">
