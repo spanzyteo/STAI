@@ -1,4 +1,3 @@
-import Banner from "./Components/Home/Banner"
 import Navbar from "./Components/Navbar"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./Home"

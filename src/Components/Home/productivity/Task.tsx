@@ -1,7 +1,34 @@
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 240 },
+  show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: 'easeOut' } },
+}
 
 const Task = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1280) // xl breakpoint
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   return (
-    <div className="flex xl:flex-row flex-col gap-[1.34rem] lg:gap-[1.75rem] bg-[#FFF] p-[1.15rem] lg:p-[1.5rem] items-start lg:items-center border border-[#EEE8E0] rounded-[1.5rem]">
+    <motion.div
+      variants={fadeUp}
+      {...(isSmallScreen && {
+        initial: 'hidden',
+        whileInView: 'show',
+        viewport: { once: true, amount: 0.2 },
+      })}
+      className="flex xl:flex-row flex-col gap-[1.34rem] lg:gap-[1.75rem] bg-[#FFF] p-[1.15rem] lg:p-[1.5rem] items-start lg:items-center border border-[#EEE8E0] rounded-[1.5rem]"
+    >
       <div className="flex flex-col gap-[1.34rem] lg:gap-[0.75rem] w-full">
         <div className="flex flex-col lg:items-center lg:flex-row gap-[1.34rem] lg:gap-[1rem]">
           <img
@@ -31,8 +58,8 @@ const Task = () => {
           </div>
         </div>
       </div>
-      <img src="/product2.jpg" alt="" className="w-full"/>
-    </div>
+      <img src="/product2.jpg" alt="" className="w-full" />
+    </motion.div>
   )
 }
 

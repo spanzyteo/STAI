@@ -2,6 +2,21 @@ import Dart from "./Dart"
 import Task from "./Task"
 import Voice from "./Voice"
 import Voice1 from "./Voice1"
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.6,
+    },
+  },
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 240 },
+  show: { opacity: 1, y: 0, transition: { duration: 1.7, ease: 'easeOut' } },
+}
 
 const ProductivitySection = () => {
   return (
@@ -15,8 +30,14 @@ const ProductivitySection = () => {
           Not the Other Way Around
         </p>
       </div>
-      <div className="flex flex-col xl:flex-row lg:items-center gap-[2.28rem] lg:gap-[1.25rem] mt-[2rem] lg:mt-[5rem]">
-        <Voice />
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="flex flex-col xl:flex-row gap-[2.28rem] lg:gap-[1.25rem] mt-[2rem] lg:mt-[5rem]"
+      >
+        <Voice/>
         <div className="flex flex-col gap-[2.28rem] lg:gap-[1.44rem]">
           <Task />
           <div className="flex flex-col lg:flex-row lg:gap-[1.5rem] gap-[2.28rem] lg:justify-between self-stretch">
@@ -24,7 +45,7 @@ const ProductivitySection = () => {
             <Dart />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
