@@ -8,7 +8,7 @@ const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.6,
+      staggerChildren: 0.9,
     },
   },
 }
@@ -21,7 +21,11 @@ const fadeUp = {
 const ProductivitySection = () => {
   return (
     <div className="py-[3rem] lg:py-[5rem] px-[1.5rem] md:px-[6.5rem] flex flex-col bg-[#FFF7EC]">
-      <div className="flex flex-col w-full lg:w-[48rem] gap-[0.75rem] lg:gap-[1.08rem] mx-auto">
+      <motion.div 
+        variants={fadeUp} 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }} className="flex flex-col w-full lg:w-[48rem] gap-[0.75rem] lg:gap-[1.08rem] mx-auto">
         <h1 className="text-center playfair text-[2.125rem] lg:text-[3rem] font-bold leading-[3.1875rem] lg:leading-normal">
           Why use STAI?
         </h1>
@@ -29,7 +33,7 @@ const ProductivitySection = () => {
           Productivity That Adapts to You and AI That Understands How You Work –
           Not the Other Way Around
         </p>
-      </div>
+      </motion.div>
       <motion.div
         variants={containerVariants}
         initial="hidden"

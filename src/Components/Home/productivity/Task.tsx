@@ -21,12 +21,11 @@ const Task = () => {
   }, [])
   return (
     <motion.div
+      key={isSmallScreen ? 'small' : 'large'}
       variants={fadeUp}
-      {...(isSmallScreen && {
-        initial: 'hidden',
-        whileInView: 'show',
-        viewport: { once: true, amount: 0.2 },
-      })}
+      initial={isSmallScreen ? "hidden" : undefined}
+      whileInView={isSmallScreen? "show" : undefined}
+      viewport={isSmallScreen ? { once: true, amount: 0.1 } : undefined}
       className="flex xl:flex-row flex-col gap-[1.34rem] lg:gap-[1.75rem] bg-[#FFF] p-[1.15rem] lg:p-[1.5rem] items-start lg:items-center border border-[#EEE8E0] rounded-[1.5rem]"
     >
       <div className="flex flex-col gap-[1.34rem] lg:gap-[0.75rem] w-full">
